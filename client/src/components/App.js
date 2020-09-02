@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ListsContainer from './components/ListsContainer';
+import ListsContainer from './ListsContainer';
 
 const App = () => {
     return (
