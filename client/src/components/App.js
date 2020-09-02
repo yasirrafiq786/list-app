@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+
 import ListsContainer from './ListsContainer';
 
 const App = () => {
@@ -8,6 +8,7 @@ const App = () => {
             <header className="App-header">
                 <h1 className="App-title">Hello List</h1>
             </header>
+            <ListsContainer />
         </div>
     )
 }
