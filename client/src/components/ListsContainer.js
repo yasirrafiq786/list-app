@@ -6,7 +6,7 @@ const ListsContainer = () => {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    setAxiosHeader();
+    
     axios
       .get('http://localhost:3001/api/v1/lists.json')
       .then((response) => {
