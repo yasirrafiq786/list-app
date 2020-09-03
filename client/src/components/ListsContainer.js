@@ -14,7 +14,7 @@ const ListsContainer = () => {
         setLists(response.data);
       })
       .catch((errors) => console.log(errors));
-  });
+  },[]);
 
   return <div className="ListsContainer">Lists</div>;
 };
