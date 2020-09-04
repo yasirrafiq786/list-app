@@ -8,7 +8,7 @@ const App = () => {
             <header className="App-header">
                 <h1 className="App-title">Hello List</h1>
             </header>
-            <ListsContainer />
+            <ListsContainer >
         </div>
     )
 }
