@@ -6,7 +6,6 @@ const ListsContainer = () => {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    
     axios
       .get('http://localhost:3001/api/v1/lists.json')
       .then((response) => {
@@ -14,9 +13,20 @@ const ListsContainer = () => {
         setLists(response.data);
       })
       .catch((errors) => console.log(errors));
-  },[]);
+  }, []);
 
-  return <div className="ListsContainer">Lists</div>;
+  return (
+    <div className="list-container">
+      {lists.map((list) => {
+        return (
+          <div className="single-list" key={list.id}>
+            <h4>{list.title}</h4>
+            <p>{list.excerpt}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ListsContainer;
