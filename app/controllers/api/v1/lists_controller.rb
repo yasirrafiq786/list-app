@@ -4,7 +4,7 @@ module Api::V1
 
     # GET /lists
     def index
-      @lists = List.order(:id)
+      @lists = List.order(created_at: :desc)
 
       render json: @lists
     end

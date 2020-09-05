@@ -2,26 +2,32 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import List from './List';
 import NewListForm from './NewListForm';
+import _ from 'lodash';
 
 const ListsContainer = () => {
   const [lists, setLists] = useState([]);
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchItems = async () => {
-    const response = await axios.get('http://localhost:3001/api/v1/lists.json');
-    setLists(response.data);
-  };
-  fetchItems();
- } ,[lists]);
+      const response = await axios.get(
+        'http://localhost:3001/api/v1/lists.json'
+      );
+      setLists(response.data);
+    };
+    fetchItems();
+  }, []);
 
   const addList = (newList) => {
     const updatedLists = [newList, ...lists];
     setLists(updatedLists);
   };
 
-  const removeList = () => {
-    
-  }
+  const removeList = (id) => {
+    const updatedLists = _.reject(lists, function (list) {
+      return list.id === id;
+    });
+    setLists(updatedLists);
+  };
 
   return (
     <div className="list-container">
