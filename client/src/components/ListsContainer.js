@@ -12,17 +12,21 @@ const ListsContainer = () => {
     setLists(response.data);
   };
   fetchItems();
- } ,[]);
+ } ,[lists]);
 
   const addList = (newList) => {
     const updatedLists = [newList, ...lists];
     setLists(updatedLists);
   };
 
+  const removeList = () => {
+    
+  }
+
   return (
     <div className="list-container">
       {lists.map((list) => {
-        return <List list={list} key={list.id} />;
+        return <List list={list} removeList={removeList} key={list.id} />;
       })}
       <NewListForm addList={addList} />
     </div>
