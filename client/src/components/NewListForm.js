@@ -5,17 +5,18 @@ const NewListForm = (props) => {
   const titleRef = useRef();
   const excerptRef = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    
     e.preventDefault();
-    axios
+    const response = await axios
       .post('http://localhost:3001/api/v1/lists', {
         list: {
           title: titleRef.current.value,
           excerpt: excerptRef.current.value,
         },
       })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+      const newList = response.data
+      props.addList(newList)
       titleRef.current.value = '';
       excerptRef.current.value = '';
       titleRef.current.focus();

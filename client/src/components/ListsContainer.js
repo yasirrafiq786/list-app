@@ -6,24 +6,25 @@ import NewListForm from './NewListForm';
 const ListsContainer = () => {
   const [lists, setLists] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/v1/lists.json')
-      .then((response) => {
-        console.log(response);
-        setLists(response.data);
-      })
-      .catch((errors) => console.log(errors));
-  }, []);
+  useEffect( () => {
+    const fetchItems = async () => {
+    const response = await axios.get('http://localhost:3001/api/v1/lists.json');
+    setLists(response.data);
+  };
+  fetchItems();
+ } ,[]);
 
-  
+  const addList = (newList) => {
+    const updatedLists = [newList, ...lists];
+    setLists(updatedLists);
+  };
 
   return (
     <div className="list-container">
       {lists.map((list) => {
         return <List list={list} key={list.id} />;
       })}
-      <NewListForm  />
+      <NewListForm addList={addList} />
     </div>
   );
 };
