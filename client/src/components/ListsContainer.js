@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import setAxiosHeader from './setAxiosHeader';
+import List from './List';
+import NewListForm from './NewListForm';
 
 const ListsContainer = () => {
   const [lists, setLists] = useState([]);
@@ -15,16 +16,14 @@ const ListsContainer = () => {
       .catch((errors) => console.log(errors));
   }, []);
 
+  
+
   return (
     <div className="list-container">
       {lists.map((list) => {
-        return (
-          <div className="single-list" key={list.id}>
-            <h4>{list.title}</h4>
-            <p>{list.excerpt}</p>
-          </div>
-        );
+        return <List list={list} key={list.id} />;
       })}
+      <NewListForm  />
     </div>
   );
 };
