@@ -12,7 +12,7 @@ const List = ({list}) => {
   <div className="single-list" key={list.id}>
     <h4>{list.title}</h4>
     <p>{list.excerpt}</p>
-    <button onClick={removeList} >Erase</button>
+    <button onClick={removeList}>Erase</button>
   </div>
   )
 };
