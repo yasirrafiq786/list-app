@@ -8,12 +8,14 @@ const EditListForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.patch(`http://localhost:3001/api/v1/lists/${id}`, {
-      list: {
-        title,
-        excerpt,
-      },
-    });
+    axios
+      .patch(`http://localhost:3001/api/v1/lists/${id}`, {
+        list: {
+          title,
+          excerpt,
+        },
+      })
+      .then((response) => console.log(response));
     props.editList(id, title, excerpt);
   };
 

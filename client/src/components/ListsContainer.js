@@ -34,12 +34,16 @@ const ListsContainer = () => {
     console.log('passed');
   };
 
+  const editingList = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="list-container">
       {lists.map((list) => {
         return <List list={list} removeList={removeList} key={list.id} />;
       })}
-      <NewListForm addList={addList} />
+      <NewListForm addList={addList} editingList={editingList} />
     </div>
   );
 };
