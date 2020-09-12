@@ -3,6 +3,7 @@ import axios from 'axios';
 import List from './List';
 import NewListForm from './NewListForm';
 import _ from 'lodash';
+import EditListForm from './EditListForm';
 
 const ListsContainer = () => {
   const [lists, setLists] = useState([]);
@@ -41,6 +42,7 @@ const ListsContainer = () => {
   return (
     <div className="list-container">
       {lists.map((list) => {
+        if (list.id === editingListId) {
         return (
           <List
             list={list}
@@ -48,7 +50,9 @@ const ListsContainer = () => {
             key={list.id}
             editingList={editingList}
           />
-        );
+        )} else return (
+          <EditListForm key={list.id} list={list} editList={editList}/>
+        )
       })}
       <NewListForm addList={addList} />
     </div>
