@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const EditListForm = () => {
+const EditListForm = (props) => {
   const [title, setTitle] = useState(props.list.title);
   const [excerpt, setExcerpt] = useState(props.list.excerpt);
   const id = props.list.id;

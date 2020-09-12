@@ -43,16 +43,16 @@ const ListsContainer = () => {
     <div className="list-container">
       {lists.map((list) => {
         if (list.id === editingListId) {
-        return (
-          <List
-            list={list}
-            removeList={removeList}
-            key={list.id}
-            editingList={editingList}
-          />
-        )} else return (
-          <EditListForm key={list.id} list={list} editList={editList}/>
-        )
+          return (
+            <List
+              list={list}
+              removeList={removeList}
+              key={list.id}
+              editingList={editingList}
+            />
+          );
+        } else
+          return <EditListForm key={list.id} list={list} editList={editList} />;
       })}
       <NewListForm addList={addList} />
     </div>
