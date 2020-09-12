@@ -4,19 +4,18 @@ import axios from 'axios';
 const EditListForm = (props) => {
   const [title, setTitle] = useState(props.list.title);
   const [excerpt, setExcerpt] = useState(props.list.excerpt);
-  const id = props.list.id;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .patch(`http://localhost:3001/api/v1/lists/${id}`, {
+    const response = await axios
+      .patch(`http://localhost:3001/api/v1/lists/${props.list.id}`, {
         list: {
           title,
           excerpt,
         },
       })
-      .then((response) => console.log(response));
-    props.editList(id, title, excerpt);
+    const updatedList = response.data
+    props.editList(updatedList);
   };
 
   return (

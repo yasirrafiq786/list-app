@@ -31,18 +31,20 @@ const ListsContainer = () => {
     setLists(updatedLists);
   };
 
-  const editList = (title, excerpt, id) => {
-    console.log('passed');
-  };
-
   const editingList = (id) => {
     setEditingListId(id);
+  };
+
+  const editList = (updatedList) => {
+    const index = _.findIndex(lists, function(list) {return list.id === updatedList.id})
+    lists[index] = updatedList;
+    setEditingListId(null);
   };
 
   return (
     <div className="list-container">
       {lists.map((list) => {
-        if (list.id === editingListId) {
+        if (list.id !== editingListId) {
           return (
             <List
               list={list}
