@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 const ListsContainer = () => {
   const [lists, setLists] = useState([]);
+  const [editingListId, setEditingListId] = useState(null);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -27,6 +28,10 @@ const ListsContainer = () => {
       return list.id === id;
     });
     setLists(updatedLists);
+  };
+
+  const editList = (title, excerpt, id) => {
+    console.log('passed');
   };
 
   return (
