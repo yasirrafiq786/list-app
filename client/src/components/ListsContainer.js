@@ -35,15 +35,22 @@ const ListsContainer = () => {
   };
 
   const editingList = (id) => {
-    console.log(id);
+    setEditingListId(id);
   };
 
   return (
     <div className="list-container">
       {lists.map((list) => {
-        return <List list={list} removeList={removeList} key={list.id} />;
+        return (
+          <List
+            list={list}
+            removeList={removeList}
+            key={list.id}
+            editingList={editingList}
+          />
+        );
       })}
-      <NewListForm addList={addList} editingList={editingList} />
+      <NewListForm addList={addList} />
     </div>
   );
 };
